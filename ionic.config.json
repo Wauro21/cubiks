@@ -1,0 +1,7 @@
+{
+  "name": "cubiks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
