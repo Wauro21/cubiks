@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+}
+
+.controls{
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.result{
+}
