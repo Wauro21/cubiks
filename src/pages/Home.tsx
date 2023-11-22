@@ -6,8 +6,10 @@ import React from 'react';
 
 interface moveData {
   [key: string]: {
-    value: string | null,
-    color: string,
+    UF_value: string | null,
+    UF_color: string,
+    UFR_value: string | null,
+    UFR_color: string,
   }
 
 }
@@ -35,15 +37,23 @@ const Home: React.FC = () => {
   const [col, setCol] = React.useState('A');
 
   let key_move = row + col
-  let color = moves[key_move].color;
-  console.log('Moves', moves);
-  console.log('Color: ', color)
+  let UF_color = moves[key_move].UF_color;
+  let UFR_color = moves[key_move].UFR_color;
+  let UF_font_color = (UF_color === '#FFFF00' || UF_color == '#FFFFFF') ? 'black':'white';
+  let UFR_font_color = (UFR_color === '#FFFF00' || UFR_color == '#FFFFFF') ? 'black':'white';
 
 
-  const parseMove = () => {
-    let m_test = moves[key_move].value;
-    if (m_test !== null) return m_test;
-    else return 'No move';
+
+  const parseUFMove = () => {
+    let m_test = moves[key_move].UF_value;
+    if (m_test !== null) return 'UF: '+m_test;
+    else return 'UF: No move';
+  }
+
+  const parseUFRMove = () => {
+    let m_test = moves[key_move].UFR_value;
+    if (m_test !== null) return 'UFR: '+m_test;
+    else return 'UFR: No move';
   }
 
   return (
@@ -59,7 +69,7 @@ const Home: React.FC = () => {
             margin: 'auto',
             marginTop: '10vh',
             width: '80vw',
-            height: '80vw',
+            height: '100vw',
             backgroundColor: 'var(--ion-color-light)',
             borderRadius: '5%',
 
@@ -69,7 +79,7 @@ const Home: React.FC = () => {
                 <ColorTextField
                   select
                   value={row}
-                  label="Select Row"
+                  label="First target"
                   sx={{
                     width: '30vw',
                   }}
@@ -83,7 +93,7 @@ const Home: React.FC = () => {
                 <ColorTextField
                   select
                   value={col}
-                  label="Select Column"
+                  label="Second target"
                   sx={{
                     width: '30vw',
                   }}
@@ -100,12 +110,12 @@ const Home: React.FC = () => {
               <Paper
                 elevation={0}
                 sx={{
-                  backgroundColor: color,
+                  backgroundColor: UF_color,
                   width: '50vw',
                   height: '20vw',
-                  color: 'white',
+                  color: UF_font_color,
                   fontWeight: 'bold',
-                  fontSize: '1.5em',
+                  fontSize: '1em',
                   alignItems: 'center',
                   justifyContent: 'center',
                   display: 'flex',
@@ -114,7 +124,26 @@ const Home: React.FC = () => {
                   marginTop: '5vh',
                   borderRadius: '5%',
                 }}>
-                {parseMove()}
+                {parseUFMove()}
+              </Paper>
+              <Paper
+                elevation={0}
+                sx={{
+                  backgroundColor: UFR_color,
+                  width: '50vw',
+                  height: '20vw',
+                  color: UFR_font_color,
+                  fontWeight: 'bold',
+                  fontSize: '1em',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  display: 'flex',
+                  textAlign: 'center',
+                  margin: 'auto',
+                  marginTop: '5vh',
+                  borderRadius: '5%',
+                }}>
+                {parseUFRMove()}
               </Paper>
             </div>
           </Card>

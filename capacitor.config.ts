@@ -7,6 +7,13 @@ const config: CapacitorConfig = {
   server: {
     androidScheme: 'https'
   }
-};
+,
+    android: {
+       buildOptions: {
+          keystorePath: '/home/mauricio/Proyectos/cubiks/keys/cubiks_keys.jks',
+          keystoreAlias: 'demo_build',
+       }
+    }
+  };
 
 export default config;
